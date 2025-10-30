@@ -6,3 +6,5 @@ tmp/
 temp/
 .env
 ./.env
+./yarn.lock
+yarn.locks
