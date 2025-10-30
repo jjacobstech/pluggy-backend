@@ -4,12 +4,13 @@ import { AuthService } from './auth.service';
 export declare class AuthController {
     private readonly authService;
     constructor(authService: AuthService);
-    login(loginUserDto: LoginUserDto): {
-        dto: LoginUserDto;
-    };
-    logout(id: string, email: string): Promise<void>;
-    register(registerUserDto: RegisterUserDto): Promise<{
-        user: import("../database/entities/user.entity").User;
-        access_token: string;
+    login(loginUserDto: LoginUserDto): Promise<import("./dto/Auth.types").AuthResponse>;
+    logout(id: string, email: string): Promise<{
+        user: {
+            id: string;
+            email: string;
+            name: string;
+        };
     }>;
+    register(registerUserDto: RegisterUserDto): Promise<import("./dto/Auth.types").AuthResponse>;
 }

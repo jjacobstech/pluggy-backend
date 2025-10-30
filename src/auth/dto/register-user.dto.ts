@@ -4,8 +4,8 @@ import {
   MinLength,
   IsPhoneNumber,
   IsNotEmpty,
-  Matches,
 } from 'class-validator';
+import { IsPasswordMatch } from 'src/decorator/password-match.decorator';
 
 export class RegisterUserDto {
   @IsNotEmpty()
@@ -17,7 +17,6 @@ export class RegisterUserDto {
   email: string;
 
   @IsNotEmpty()
-  @IsPhoneNumber()
   phone_no: string;
 
   @IsNotEmpty()
@@ -28,6 +27,6 @@ export class RegisterUserDto {
   @IsNotEmpty()
   @IsString()
   @MinLength(6)
-  @Matches('password')
+  @IsPasswordMatch('password', { message: 'Passwords do not match' })
   confirm_password: string;
 }

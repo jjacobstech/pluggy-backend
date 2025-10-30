@@ -19,13 +19,13 @@ export class UsersService {
 
   async create(user: RegisterUserDto) {
     const hashedPassword: string = await bcrypt.hash(user.password, 10);
-    const registeredUser = await this.userRepository.create({
+    const newUser = this.userRepository.create({
         name: user.name,
         email: user.email,
         phone_no: user.phone_no,
         password: hashedPassword,
     });
-
+    const registeredUser = await this.userRepository.save(newUser);
     return registeredUser;
   }
 
@@ -48,10 +48,10 @@ export class UsersService {
   }
 
   async update(id: number, updateUserDto: UpdateUserDto) {
-    const user = await this.userRepository.update(id,{
+    const updatedUser = await this.userRepository.update(id,{
       ...updateUserDto
     });
-    return user;
+    return updatedUser;
   }
 
   async remove(id: number) {
@@ -60,6 +60,7 @@ export class UsersService {
     if (!user) {
       throw new Error("User not found");
     }
+
     return true;
   }
 }

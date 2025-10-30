@@ -31,12 +31,13 @@ let UsersService = class UsersService {
     }
     async create(user) {
         const hashedPassword = await bcrypt_1.default.hash(user.password, 10);
-        const registeredUser = await this.userRepository.create({
+        const newUser = this.userRepository.create({
             name: user.name,
             email: user.email,
             phone_no: user.phone_no,
             password: hashedPassword,
         });
+        const registeredUser = await this.userRepository.save(newUser);
         return registeredUser;
     }
     async findOne(id, email) {
@@ -53,10 +54,10 @@ let UsersService = class UsersService {
         return user;
     }
     async update(id, updateUserDto) {
-        const user = await this.userRepository.update(id, {
+        const updatedUser = await this.userRepository.update(id, {
             ...updateUserDto
         });
-        return user;
+        return updatedUser;
     }
     async remove(id) {
         const user = await this.userRepository.delete(id);

@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RegisterUserDto = void 0;
 const class_validator_1 = require("class-validator");
+const password_match_decorator_1 = require("../../decorator/password-match.decorator");
 class RegisterUserDto {
     name;
     email;
@@ -31,7 +32,6 @@ __decorate([
 ], RegisterUserDto.prototype, "email", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.IsPhoneNumber)(),
     __metadata("design:type", String)
 ], RegisterUserDto.prototype, "phone_no", void 0);
 __decorate([
@@ -44,7 +44,7 @@ __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.MinLength)(6),
-    (0, class_validator_1.Matches)('password'),
+    (0, password_match_decorator_1.IsPasswordMatch)('password', { message: 'Passwords do not match' }),
     __metadata("design:type", String)
 ], RegisterUserDto.prototype, "confirm_password", void 0);
 //# sourceMappingURL=register-user.dto.js.map

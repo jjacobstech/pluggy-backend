@@ -31,6 +31,7 @@
       "@nestjs/platform-express": "^11.0.1",
       "@nestjs/typeorm": "^11.0.0",
       "argon": "^2.0.21",
+      "argon-logger": "^0.1.0",
       "argon2": "^0.44.0",
       "bcrypt": "^6.0.0",
       "class-transformer": "^0.5.1",
@@ -40,9 +41,9 @@
       "passport-jwt": "^4.0.1",
       "pg": "^8.14.1",
       "pg-query-stream": "^4.10.3",
-      "prisma": "^6.16.3",
       "reflect-metadata": "^0.2.2",
       "rxjs": "^7.8.1",
+      "silkrouter": "^3.4.6",
       "typeorm": "0.3.27",
       "zod": "^4.1.12"
    },
@@ -72,6 +73,10 @@
       "tsconfig-paths": "^4.2.0",
       "typescript": "^5.7.3",
       "typescript-eslint": "^8.20.0"
+   },
+   "resolutions": {
+      "argon-logger": "^0.1.0",
+      "silkrouter": "^3.4.6"
    },
    "jest": {
       "moduleFileExtensions": [

@@ -23,7 +23,7 @@ let AuthController = class AuthController {
         this.authService = authService;
     }
     login(loginUserDto) {
-        return { dto: loginUserDto };
+        return this.authService.logIn(loginUserDto);
     }
     logout(id, email) {
         return this.authService.Logout(id, email);
